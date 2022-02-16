@@ -76,17 +76,17 @@ router.get("/:id", async (req, res) => {
 
 //get all post of user
 
-router.get("/timeline/all", async (req, res) => {
+router.get("/timeline/:userId", async (req, res) => {
   let postArray = [];
   try {
-    const currentUser = await User.findById(req.body.userId);
+    const currentUser = await User.findById(req.params.userId);
     const userPost = await Post.find({ userId: currentUser._id });
     const followedPost = await Promise.all(
       currentUser.followings.map((followingsId) => {
         return Post.find({ userId: followingsId });
       })
     );
-    res.json(userPost.concat(...followedPost));
+    res.status(200).json(userPost.concat(...followedPost));
   } catch (err) {
     res.status(500).json(err);
   }

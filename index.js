@@ -23,6 +23,6 @@ app.use("/api/users", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/post", postRouter);
 
-app.listen(3000, () => {
+app.listen(8080, () => {
   console.log("server running....");
 });
