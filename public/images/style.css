@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Roboto:wght@300&family=Rowdies:wght@700&family=Rubik:ital@1&display=swap");
+
+:root {
+  --robotoc: "Roboto Condensed", sans-serif;
+  --rowdies: "Rowdies", cursive;
+  --rubik: "Rubik", sans-serif;
+}
+
+* {
+  margin: 0;
+  font-family: var(--robotoc);
+}
