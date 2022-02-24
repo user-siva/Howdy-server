@@ -80,6 +80,27 @@ router.put("/:id/follow", async (req, res) => {
   }
 });
 
+//get following
+
+router.get("/friends/:userId", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    const frds = await Promise.all(
+      user.followings.map((frdId) => {
+        return User.findById(frdId);
+      })
+    );
+    let frdlist = [];
+    frds.map((frd) => {
+      const { _id, username, profilePicture } = frd;
+      frdlist.push({ _id, username, profilePicture });
+    });
+    res.status(200).json(frdlist);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 //Unfollow user
 
 router.put("/:id/unfollow", async (req, res) => {

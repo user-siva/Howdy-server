@@ -11,6 +11,7 @@ const multer = require("multer");
 const bodyParser = require("body-parser");
 const path = require("path");
 
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 dotenv.config();
@@ -40,7 +41,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 app.post("/api/upload", upload.single("file"), (req, res) => {
   try {
-   
     return res.status(200).json("File uploaded");
   } catch (error) {
     console.log(error);
