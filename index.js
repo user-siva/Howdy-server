@@ -7,6 +7,8 @@ const dotenv = require("dotenv");
 const userRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
 const postRouter = require("./routes/posts");
+const conversationRoute = require("./routes/conversations");
+const messageRoute = require("./routes/messages");
 const multer = require("multer");
 const bodyParser = require("body-parser");
 const path = require("path");
@@ -50,6 +52,8 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 app.use("/api/users", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/post", postRouter);
+app.use("/api/conversations", conversationRoute);
+app.use("/api/messages", messageRoute);
 
 app.listen(8080, () => {
   console.log("server running....");
